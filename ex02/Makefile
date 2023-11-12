@@ -5,12 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: pcatapan <pcatapan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/01 22:52:54 by pcatapan          #+#    #+#              #
-#    Updated: 2023/11/01 22:53:08 by pcatapan         ###   ########.fr        #
+#    Created: 2023/11/12 11:57:08 by pcatapan          #+#    #+#              #
+#    Updated: 2023/11/12 13:08:17 by pcatapan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = form
+NAME = bureaucrat
 
 SRC 		= *.cpp
 
@@ -39,8 +39,9 @@ clean:
 
 fclean: clean
 	@$(RM) $(NAME)
+	@$(RM) *_shrubbery
 	@printf "$(YELLOW)    - Executable removed.$(RESET)\n"
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus norm
+.PHONY: all clean fclean re

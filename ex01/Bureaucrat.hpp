@@ -1,38 +1,39 @@
-#ifndef BUREAUCRAT_HPP
+#pragma once
 
-# define BUREAUCRAT_HPP
-# include <iostream>
+#include <iostream>
+#include "Form.hpp"
 
-class Bureaucrat
-{
+class Form;
+
+class Bureaucrat {
 	private:
-		std::string const _name;
-		int	_grade;
+		const std::string _name;
+		int _grade;
 
 	public:
-		Bureaucrat(const char* name, int grade = 150);
-		~Bureaucrat(void);
+		Bureaucrat();
+		Bureaucrat(std::string name, int grade);
+		Bureaucrat(const Bureaucrat& original);
+		~Bureaucrat();
+		Bureaucrat &operator=(const Bureaucrat &original);
 
-		Bureaucrat(const Bureaucrat &copy);
-		Bureaucrat &operator=(const Bureaucrat& copy);
+		const std::string getName();
+		int getGrade();
+		void setGrade(int grade);
+		void incrementGrade();
+		void decrementGrade();
 
-		const std::string getName(void) const;
-		int getGrade(void) const;
-		void incrementGrade(void);
-		void decrementGrade(void);
-		void signForm(bool isSigned, const std::string& formName, const char* reason = NULL) const;
+		void signForm(Form& form);
 
 		class GradeTooHighException : public std::exception {
 			public:
-				virtual const char* what() const throw();
+				virtual const char *what() const throw();
 		};
 
 		class GradeTooLowException : public std::exception {
 			public:
-				virtual const char* what() const throw();
+				virtual const char *what() const throw();
 		};
 };
 
-std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
-
-#endif
+std::ostream& operator<<(std::ostream& os, Bureaucrat& src);
